@@ -2,6 +2,10 @@
 
 Shortlist keeps job openings, interview stages, and follow-up dates on one board. It runs entirely in the browser with HTML, CSS, and vanilla JavaScript.
 
+[Open the live tracker](https://dileep008.github.io/job-application-tracker/) · Choose **Explore demo board** to try it with sample roles.
+
+![Shortlist demo workspace showing five hiring stages and scheduled follow-ups](preview.jpg)
+
 ## Run locally
 
 Clone the repository, then start a static server from the project directory.
