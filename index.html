@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#163e34">
+  <meta name="description" content="Shortlist is a personal job application board. Save openings, track interview stages, and plan your next follow-up.">
+  <title>Shortlist · Job Application Tracker</title>
+  <link rel="icon" href="mark.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip">Skip to workspace</a>
+  <header class="masthead">
+    <div class="top inner">
+      <div class="brand"><img src="mark.svg" width="34" height="34" alt="">Shortlist</div>
+      <nav aria-label="Main navigation">
+        <button class="nav-button" data-view="board" aria-current="page">Board</button>
+        <button class="nav-button" data-view="followups">Follow-ups</button>
+      </nav>
+      <label class="switch"><span class="sr-only">Workspace</span>
+        <span class="workspace-dot" aria-hidden="true"></span>
+        <select id="workspace"><option value="personal">My workspace</option><option value="demo">Demo workspace</option></select>
+      </label>
+    </div>
+  </header>
+  <main id="main" class="inner">
+    <div class="page-heading">
+      <div><h1 id="title">Application board</h1><p id="subtitle">Your roles and next steps, from first save to offer.</p></div>
+      <button class="primary" id="add"><span class="plus" aria-hidden="true">+</span> Add application</button>
+    </div>
+    <p id="warning" role="alert" hidden></p>
+    <div id="demo-note" hidden>You're exploring a fictional demo board. <button id="use-own" class="text-btn">Open my workspace</button></div>
+    <section class="metrics" aria-label="Application overview">
+      <div class="metric"><span class="metric-label"><i class="glyph layers" aria-hidden="true"></i>Total roles</span><strong id="total">0</strong><span id="mix" class="mix" aria-hidden="true"></span></div>
+      <div class="metric"><span class="metric-label"><i class="glyph interview" aria-hidden="true"></i>Interviewing</span><strong id="interviews">0</strong><small>In the interview stage</small></div>
+      <div class="metric"><span class="metric-label"><i class="glyph flag" aria-hidden="true"></i>Follow-ups due</span><strong id="due">0</strong><small>Today or overdue</small></div>
+    </section>
+    <section aria-labelledby="section-title" class="work-area">
+      <div class="toolbar"><div class="section-name"><h2 id="section-title">Hiring pipeline</h2></div>
+        <label class="search"><span class="magnify" aria-hidden="true"></span><span class="sr-only">Search company or role</span><input type="search" id="search" placeholder="Search company or role" maxlength="120"></label>
+      </div>
+      <div id="content"></div>
+    </section>
+    <footer><span><span class="local-dot" aria-hidden="true"></span> Stored in this browser</span><button id="demo-toggle" class="text-btn">Explore demo board</button></footer>
+  </main>
+  <dialog id="editor" aria-labelledby="editor-title">
+    <form id="entry-form">
+      <div class="dialog-heading"><h2 id="editor-title">Add application</h2><button type="button" class="icon-button" id="close" aria-label="Close editor">×</button></div>
+      <div class="fields">
+        <label>Company<input name="company" required maxlength="100" autocomplete="off" placeholder="e.g. Northstar"></label>
+        <label>Job title<input name="role" required maxlength="140" autocomplete="off" placeholder="e.g. Software Engineer"></label>
+        <div class="row"><label>Stage<select name="stage"></select></label><label>Follow-up date<input type="date" name="followup" min="0001-01-01" max="9999-12-31"></label></div>
+        <label>Job posting URL <span class="optional">Optional</span><input name="url" type="url" placeholder="https://" maxlength="2000" autocomplete="off"></label>
+        <a id="open-posting" hidden target="_blank" rel="noopener noreferrer">Open job posting</a>
+        <label>Notes <span class="optional">Optional</span><textarea name="notes" rows="3" maxlength="6000" placeholder="Contact, interview details, or next steps"></textarea></label>
+      </div>
+      <p id="form-error" role="alert" hidden></p>
+      <div class="dialog-actions"><button type="button" id="remove" class="danger" hidden>Delete</button><button type="button" class="secondary" id="cancel">Cancel</button><button class="primary" type="submit">Save application</button></div>
+    </form>
+  </dialog>
+  <dialog id="confirm-delete" aria-labelledby="delete-title">
+    <h2 id="delete-title">Delete application?</h2><p id="delete-description"></p><div class="dialog-actions"><button class="secondary" id="keep">Keep application</button><button class="danger-fill" id="confirm">Delete application</button></div>
+  </dialog>
+  <div class="sr-only" id="announcement" role="status"></div>
+</body>
+</html>
